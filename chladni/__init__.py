@@ -42,8 +42,8 @@ from .AudioChladni import (
     FrequencyPlanner,
     StableSection
 )
-from IdealizedChladni import ChladniSymmetryBreaking
-from FrequencyChladni import FrequencyChladni, FrequencyComponent
+from .IdealizedChladni import ChladniSymmetryBreaking
+from .FrequencyChladni import FrequencyChladni, FrequencyComponent
 
 __all__ = [
     'PhysicalChladni',
