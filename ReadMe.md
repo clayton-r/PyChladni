@@ -25,7 +25,7 @@ The library supports:
 ## Installation
 
 ```bash
-pip install pychladni
+pip install git+https://github.com/clayton-r/pychladni.git
 ```
 
 ### System Requirements
