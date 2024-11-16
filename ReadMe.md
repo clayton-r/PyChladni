@@ -102,8 +102,8 @@ plate_props = PlateProperties(
 # Initialize the Chladni simulator
 chladni = PhysicalChladni(
     size=500,           # Resolution of simulation grid
-    delta=0.022,        # Damping coefficient
-    omega_o=104,        # Natural frequency (rad/s)
+    delta=0.022,        # Asymmetry coefficient (required to make the patterns interesting)
+    omega_o=104,        # (rad/s)
     gamma=16.64,        # Driving force coefficient
     properties=plate_props
 )
