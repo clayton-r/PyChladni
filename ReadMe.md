@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="chladni_idealized_animation.gif" alt="Chladni Pattern Animation">
+  <img src="chladni_small_animation.gif" alt="Chladni Pattern Animation">
 </p>
 
 # PyChladni
