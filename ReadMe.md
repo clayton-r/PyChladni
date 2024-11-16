@@ -75,6 +75,82 @@ The `examples` folder contains several demonstration scripts:
 - `chladni_sweep.py`: Frequency sweep animations
 - `audio_driven.py`: Audio-driven pattern generation
 
+## Detailed Examples
+
+### Physical Chladni Pattern Generation
+
+The `PhysicalChladni` class lets you generate patterns based on direct physical simulation of plate vibrations. Here's how to use it:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from pychladni import PhysicalChladni, PlateProperties
+
+# Set up plate properties
+plate_props = PlateProperties(
+    # Material properties
+    youngs_modulus=70e9,  # Young's modulus (Pa) - aluminum ≈ 70 GPa
+    poisson_ratio=0.33,   # Poisson ratio - aluminum ≈ 0.33
+    density=2700,         # Density (kg/m³) - aluminum ≈ 2700
+    thickness=0.002,      # Plate thickness (m) - 2mm
+    
+    # Geometry
+    length=0.2,          # Plate length (m) - 20cm
+    width=0.2           # Plate width (m) - 20cm
+)
+
+# Initialize the Chladni simulator
+chladni = PhysicalChladni(
+    size=500,           # Resolution of simulation grid
+    delta=0.022,        # Damping coefficient
+    omega_o=104,        # Natural frequency (rad/s)
+    gamma=16.64,        # Driving force coefficient
+    properties=plate_props
+)
+
+# Generate patterns for different frequencies
+frequencies = [50, 100, 200, 400]  # Hz
+fig, axs = plt.subplots(2, 2, figsize=(10, 10))
+
+for idx, freq in enumerate(frequencies):
+    # Compute response for this frequency
+    pattern, _ = chladni.compute_response(freq)
+    
+    # Plot
+    ax = axs[idx//2, idx%2]
+    im = ax.imshow(np.abs(pattern), cmap='viridis')
+    ax.set_title(f'{freq} Hz')
+    ax.axis('off')
+
+plt.tight_layout()
+plt.show()
+
+# Generate a single pattern with more detail
+frequency = 440  # Hz (A4 note)
+pattern, contributions = chladni.compute_response(frequency)
+
+plt.figure(figsize=(8, 8))
+plt.imshow(np.abs(pattern), cmap='viridis')
+plt.colorbar(label='Amplitude')
+plt.title(f'Chladni Pattern at {frequency} Hz')
+plt.axis('off')
+plt.show()
+
+# Analyze modal contributions
+for n1, n2, f, w in contributions[:5]:  # Show top 5 contributing modes
+    print(f"Mode ({n1}, {n2}): {f:.1f} Hz, Weight: {w:.3f}")
+```
+
+This example produces Chladni patterns for different frequencies, showing how the patterns become more complex at higher frequencies. The plate parameters can be adjusted to match different materials and geometries:
+
+Common material properties:
+- Aluminum: E = 70 GPa, ν = 0.33, ρ = 2700 kg/m³
+- Steel: E = 200 GPa, ν = 0.30, ρ = 7800 kg/m³
+- Brass: E = 105 GPa, ν = 0.35, ρ = 8500 kg/m³
+- Glass: E = 70 GPa, ν = 0.22, ρ = 2500 kg/m³
+
+The `compute_response()` method returns both the pattern and a list of contributing modes, allowing you to analyze which eigenmodes are most important for each frequency.
+
 ## Technical Background
 
 ### Ritz Method
