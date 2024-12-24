@@ -371,7 +371,7 @@ def main():
     plate = PhysicalChladni(properties=props)
 
     # Test frequencies including higher ones
-    test_freqs = [36.8, 110, 220, 440, 880, 1356]  # Hz
+    test_freqs = [171, 342, 339]  # Hz
 
     for freq in test_freqs:
         plate.analyze_frequency(freq)

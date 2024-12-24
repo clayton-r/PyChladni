@@ -5,7 +5,7 @@ from matplotlib.animation import FuncAnimation
 from matplotlib.colors import LinearSegmentedColormap
 from scipy.interpolate import interp2d
 
-from IPython.display import HTML
+# from IPython.display import HTML
 import matplotlib.animation as animation
 from tqdm.auto import tqdm
 

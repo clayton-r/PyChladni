@@ -43,28 +43,28 @@ def main():
 
     # Example 1: A440 chord (A4 + E4 + A5)
     chord_freqs = [
-        FrequencyComponent(440, 1.0),  # A4 (full amplitude)
-        FrequencyComponent(330, 0.7),  # E4 (70% amplitude)
-        FrequencyComponent(880, 0.5),  # A5 (50% amplitude)
+        FrequencyComponent(171, 1.0),  # F4 (full amplitude)
+        FrequencyComponent(339, 1.0),  # E5 (70% amplitude)
+        FrequencyComponent(342, 0.5),  # F5 (50% amplitude)
     ]
     chladni.plot_multi_frequency_pattern(chord_freqs)
 
     # Example 2: Two close frequencies creating beats
-    beat_freqs = [
-        FrequencyComponent(440, 1.0),
-        FrequencyComponent(444, 1.0),
-    ]
-    chladni.plot_multi_frequency_pattern(beat_freqs)
+    # beat_freqs = [
+    #     FrequencyComponent(440, 1.0),
+    #     FrequencyComponent(444, 1.0),
+    # ]
+    # chladni.plot_multi_frequency_pattern(beat_freqs)
 
     # Example 3: Custom plate properties
-    custom_props = PlateProperties()
-    custom_chladni = AudioChladni(
-        size=800,
-        delta=0.05,
-        properties=custom_props
-    )
-
-    custom_chladni.plot_multi_frequency_pattern(chord_freqs)
+    # custom_props = PlateProperties()
+    # custom_chladni = AudioChladni(
+    #     size=800,
+    #     delta=0.05,
+    #     properties=custom_props
+    # )
+    #
+    # custom_chladni.plot_multi_frequency_pattern(chord_freqs)
 
 
 if __name__ == "__main__":
