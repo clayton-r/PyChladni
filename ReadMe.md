@@ -4,7 +4,7 @@
 
 # PyChladni
 
-PyChladni is a Python library for generating physically accurate Chladni patterns - the geometric patterns that emerge when plates vibrate at specific frequencies. The library implements Ritz's method with symmetry breaking, providing accurate simulations of both idealized and real-world plate behavior.
+PyChladni is a Python library for generating physically accurate Chladni patterns, also known as Cymatics - the geometric patterns that emerge when plates vibrate at specific frequencies. The library implements Ritz's method with symmetry breaking, providing accurate simulations of both idealized and real-world plate behavior.
 
 ## Overview
 
